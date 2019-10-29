@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PhonebookModelStoreContainer" CdmEntityContainer="PhonebookEntities">
+    <EntitySetMapping Name="Entries">
+      <EntityTypeMapping TypeName="PhonebookModel.Entry">
+        <MappingFragment StoreEntitySet="Entry">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhonebookId" ColumnName="PhonebookId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Phonebooks">
+      <EntityTypeMapping TypeName="PhonebookModel.Phonebook">
+        <MappingFragment StoreEntitySet="Phonebook">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SearchPhonebook" FunctionName="PhonebookModel.Store.SearchPhonebook">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PhonebookModel.SearchPhonebook_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhonebookId" ColumnName="PhonebookId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

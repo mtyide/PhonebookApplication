@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PhonebookModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Entry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="PhonebookId" Type="Int32" />
+    <NavigationProperty Name="Phonebook" Relationship="Self.FK_Entry_Phonebook" FromRole="Entry" ToRole="Phonebook" />
+  </EntityType>
+  <EntityType Name="Phonebook">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Entries" Relationship="Self.FK_Entry_Phonebook" FromRole="Phonebook" ToRole="Entry" />
+  </EntityType>
+  <Association Name="FK_Entry_Phonebook">
+    <End Role="Phonebook" Type="Self.Phonebook" Multiplicity="0..1" />
+    <End Role="Entry" Type="Self.Entry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phonebook">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Entry">
+        <PropertyRef Name="PhonebookId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PhonebookEntities" annotation:LazyLoadingEnabled="false">
+    <EntitySet Name="Entries" EntityType="Self.Entry" />
+    <EntitySet Name="Phonebooks" EntityType="Self.Phonebook" />
+    <AssociationSet Name="FK_Entry_Phonebook" Association="Self.FK_Entry_Phonebook">
+      <End Role="Phonebook" EntitySet="Phonebooks" />
+      <End Role="Entry" EntitySet="Entries" />
+    </AssociationSet>
+    <FunctionImport Name="SearchPhonebook" ReturnType="Collection(PhonebookModel.SearchPhonebook_Result)">
+      <Parameter Name="search" Mode="In" Type="String" />
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SearchPhonebook_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="13" />
+    <Property Type="Int32" Name="PhonebookId" Nullable="true" />
+  </ComplexType>
+</Schema>

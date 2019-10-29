@@ -1,0 +1,142 @@
+﻿<div class="content-wrapper">
+    <div class="box-body" style="padding-top: 1.0em; display: block;" id="phonebook-home">
+        <div style="width: 100%; background-color: white; border-width: 1px; padding-left: 0.2em; font-size: 12px;">
+            <table cellpadding="0" cellspacing="0" style="width: 100%;">
+                <tr>
+                    <td style="width: 50%; text-align: left;" valign="top">
+                        <div>
+                            <div class="alert alert-link alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <div style="padding-top: 0.5em; padding-bottom: 0.5em; border: 0px solid ghostwhite; border-radius: 9px; padding-right: 0.5em;">
+                                    <div class="list-group-item" style="background-color: ghostwhite; padding-left: 0.8em; padding-right: 0.8em;">
+                                        <h4>Phonebook Application</h4> This application allows you to manage phonebook contacts
+                                    </div>
+                                </div>
+                            </div>
+                            <table style="padding-top: 0.5em; width: 100%;">
+                                <tr>
+                                    <td style="text-align: left; padding-left: 0.2em; padding-bottom: 0.2em; padding-top: 0.5em; font-size: 12px;">
+                                        <div class="col-md-6">
+                                            <div style="display: block;">
+                                                <form id="fmPhonebook">
+                                                    <div class="form-group has-feedback">
+                                                        <label for="name">Name:</label>
+                                                        <input type="text" class="form-control" maxlength="50" placeholder="Name" title="Name" id="name" name="name" required autofocus />
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-8"></div>
+                                                        <div class="col-xs-4">
+                                                            <button type="button" id="save-phonebook-btn" class="btn btn-default btn-block btn-flat">Save</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <table id="phonebook-items" style="width: 100%;" class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th id="phonebook-items-header" style="padding-bottom: 0.5em;"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="phonebook-items-body"></tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th></th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <hr />
+                            <table style="padding-top: 0.5em; width: 100%;">
+                                <tr>
+                                    <td style="text-align: left; padding-left: 0.2em; padding-bottom: 0.2em; padding-top: 0.5em; font-size: 12px;">
+                                        <a class="pull-right" style="cursor: pointer; padding-right: 0.5em; font-weight: bold;" onclick="toggle($(this), $('#phonebook-entry'), false);">Hide</a>
+                                        <div class="col-md-6">
+                                            <div style="display: block;" id="phonebook-entry">
+                                                <form id="fmPhonebookEntry">
+                                                    <div class="form-group has-feedback">
+                                                        <label for="phonebook">Phonebook:</label>
+                                                        <select class="form-control" title="Phonebook" id="phonebook" name="phonebook" disabled></select>
+                                                    </div>
+                                                    <div class="form-group has-feedback">
+                                                        <label for="contactname">Name:</label>
+                                                        <input type="text" class="form-control" maxlength="50" placeholder="Contact Name" title="Contact Name" id="contactname" name="contactname" required />
+                                                    </div>
+                                                    <div class="form-group has-feedback">
+                                                        <label for="phonenumber">Phone Number:</label>
+                                                        <input type="text" class="form-control" maxlength="50" placeholder="Phone Number" title="Phone Number" id="phonenumber" name="phonenumber" required />
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-8"></div>
+                                                        <div class="col-xs-4">
+                                                            <button type="button" id="save-entry-btn" class="btn btn-default btn-block btn-flat" disabled>Save</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="form-group has-feedback">
+                                                <label for="search">Search:</label>
+                                                <input type="text" class="form-control" maxlength="50" placeholder="Press enter to search" title="Search" id="search" name="search" disabled />
+                                            </div>
+                                            <table id="entry-items" style="width: 100%;" class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Phone Number</th>
+                                                        <th id="entry-items-header" style="padding-bottom: 0.5em;"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="entry-items-body"></tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-task">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Task Completed</h4>
+                </div>
+                <div class="modal-body">Task completed successfully</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-task-failed">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Task Failed</h4>
+                </div>
+                <div class="modal-body">Task could not be completed. Refresh page (F5) or try again</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
