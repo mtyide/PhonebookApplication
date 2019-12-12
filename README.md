@@ -1,5 +1,5 @@
 # PhonebookApplication
- Phonebook Application assessment for ABSA
+ Phonebook Application assessment (Technical)
 -------------------------------------------
 # Bootstrap
 Entity Framework 5.0 (Db-first). NET Core (MVC Razor). jQuery. HTML5. Web API
