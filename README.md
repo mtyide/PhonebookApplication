@@ -1,5 +1,5 @@
 # PhonebookApplication
- Phonebook Application assessment (Technical) for interview purposes
+ Phonebook Application assessment (Technical) for interview purposes - C# Assessment
 -------------------------------------------
 # Bootstrap
 Entity Framework 5.0 (Db-first). NET Core (MVC Razor). jQuery. HTML5. Web API
